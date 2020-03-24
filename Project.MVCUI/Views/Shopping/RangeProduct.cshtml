@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc
+@model PAVM
+
+@{
+    Layout = null;
+}
+
+
+
+
+<div id="productList" class="row product-list">
+    <section class="panel">
+        <div class="panel-body">
+
+            <div class="pull-right">
+                <ul class="pagination pagination-sm pro-page-list">
+                    @if (TempData["catID"] != null)
+                    {
+
+                        <li>  @Html.PagedListPager(Model.PagedProducts, page => Url.Action("ShoppingList", new { page, categoryID = TempData["catID"], range = Request.Params["range"] }))      </li>
+
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.PagedListPager(Model.PagedProducts, page => Url.Action("ShoppingList", new { page, range = Request.Params["range"] }))
+                        </li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    @foreach (Product item in Model.PagedProducts)
+    {
+        <div class="col-md-4">
+            <section class="panel">
+                @*<div class="pro-img-box">
+                        @if (item.ImagePath == null)
+                        {
+
+                            <img src="~/Pictures/add3bfd1-46b3-47f0-84b6-febd5998cd11.jpg" width="100" height="300" alt="Resim Yok" title="@item.ProductName" />
+                        }
+                        else
+                        {
+                            <img src="@item.ImagePath" width="100" height="300" alt="Resim Yok" title="@item.ProductName" />
+                        }
+
+                        <a href="@Url.Action("AddToCart",new { id=item.ID})" class="adtocart">
+                            <i class="icon-shopping-cart"></i>
+                        </a>
+                    </div>*@
+                <div class="panel-body text-center" id="myDIV">
+                    <h4>
+                        <a href="#" class="pro-title">
+                            @item.ProductName    @*.Substring(0, 3)...*@
+                        </a>
+                    </h4>
+                    <p class="price">$@item.UnitPrice</p>
+                </div>
+            </section>
+        </div>
+    }
+
+
+
+
+</div>
+
+

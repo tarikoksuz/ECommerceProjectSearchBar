@@ -1,0 +1,58 @@
+﻿@model EntityAttribute
+@{
+    ViewBag.Title = "AddEa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .genislik {
+        width: 300px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.ID)
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Özellik Güncelleme sayfası
+                </header>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İsim</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.AttributeName, new { @class = "form-control genislik", placeholder = "Özellik İsmini giriniz" })
+
+                        </div>
+                    </div>
+                    <br /> <br />
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Acıklama</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Description, new { @class = "form-control genislik", placeholder = "Özellik Acıklaması giriniz" })
+
+
+                        </div>
+                    </div>
+                    <br /> <br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Güncelle</label>
+                        <div class="col-sm-10">
+                            <button class="btn btn-primary">Özellik güncelle</button>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+}
+
+
+

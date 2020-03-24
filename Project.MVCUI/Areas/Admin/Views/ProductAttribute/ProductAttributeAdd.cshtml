@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ProductAttributeAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Product
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .genislik {
+        width: 300px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x=>x.ID)
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    
+                   @Model.ProductName  Özelligi Ekleme Sayfası
+                </header>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İsim</label>
+                        <div class="col-sm-10">
+                           @foreach (EntityAttribute item in ViewBag.AttributeList)
+                           {
+                               <!-- 
+                                    Burada Html helper kullanmamaya dikkat edin.. İkiser tane checkbox alıyor
+                                   -->
+
+                               <input type="checkbox" name="checkbox" value="@item.ID" /> @item.AttributeName
+
+                           }
+
+                        </div>
+                    </div>
+                    <br /> <br />
+                    
+             
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Ekle</label>
+                        <div class="col-sm-10">
+                            <button class="btn btn-primary">Ürün Özellik ekle</button>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+}
+
+

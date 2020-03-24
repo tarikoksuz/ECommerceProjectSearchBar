@@ -1,0 +1,39 @@
+﻿@model List<ProductAttribute>
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<header class="panel-heading">
+    @Model[0].Product.ProductName özellikleri
+</header>
+
+<div class="panel-body">
+    <div class="adv-table">
+        <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+            <thead>
+                <tr>
+                    <th>Özellik İsmi</th>
+                    <th>Özellik Acıklaması</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ProductAttribute item in Model)
+                {
+                    <tr class="gradeX">
+                        <td>@item.Attribute.AttributeName</td>
+                        <td>
+                            @item.Value
+                        </td>
+                       
+                </tr>
+            }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
